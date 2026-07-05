@@ -46,11 +46,11 @@ Powell's algorithm doesn't need smooth/differentiable slopes to work — it just
 \left(t*\cos(0.53)-e^{0.04\left|t\right|}\cdot\sin(0.3t)\sin(0.53)+0,42+t*\sin(0.53)+e^{0.04\left|t\right|}\cdot\sin(0.3t)\cos(0.53)\right)
 ```
 
-## Why this method / what actually happened
+## Why this method 
 
 The Powell optimization from the script alone wasn't enough — it converged to a local minimum (X ≈ 54) that looked mathematically "okay" on paper but didn't actually match the data well when I plotted it. Rather than trust the raw script output blindly, I used Desmos to visually check the fit, and manually adjusted the sliders until the curve actually matched the data points. That's how I caught that X should be 0, not ~54 — the automated result was wrong, and eyeballing it against the plot fixed it.
 
-## Limitations / what I'd try next
+## Limitations
 
 - The script's optimizer got stuck in a local minimum — next time I'd try a global optimizer like `differential_evolution` instead of Powell, so it doesn't rely on the initial guess as much.
 - I relied on manual slider adjustment in Desmos to escape the local minimum, which worked but isn't a repeatable/automated fix. Ideally the script itself should get to the right answer without needing manual visual correction.
